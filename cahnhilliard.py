@@ -25,7 +25,7 @@ dx = 0.1
 L = N*dx
 
 noise = 0.1
-c0 = 0.3
+c0 = 0.5
 c[:] = c0 + noise*np.random.standard_normal(c.shape)
 
 # plt.imshow(c)
