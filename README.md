@@ -1,11 +1,11 @@
 # PyCahnHilliard
 This program solves the Cahn Hilliard equation using the an implicit pseudospectral method. 
 
-The Cahn-Hilliard equation is given by 
+The Cahn-Hilliard equation is defined as
 
-<img src="https://render.githubusercontent.com/render/math?math=\frac{\partial c}{\partial t} = M \nabla^2\left[ \frac{\delta F}{\delta \rho}\right] ">
+<img src="https://render.githubusercontent.com/render/math?math=\frac{\partial c}{\partial t} = M \nabla^2\left[ \frac{\delta F}{\delta c}\right] ">
 
-with the free-energy written as 
+with M being a mobility and the functional of free-energy given by 
 
 <img src="https://render.githubusercontent.com/render/math?math=F[c] = \int \text{d}{\mathbf{r}} \left[ \frac{\kappa}{2} (\nabla c(\mathbf{r} ))^2 %2B  f(c)\right]">
 
