@@ -37,7 +37,7 @@ and using an *implicit* Euler integration, we have
 
 such that 
 
-<img src="https://latex.codecogs.com/svg.image?\widehat{c}_{\boldsymbol{k}}^{n&plus;1}=&space;\frac{&space;\widehat{c}_{\boldsymbol{k}}-&space;\Delta&space;t&space;M&space;k^2&space;\mathcal{FT}\{f'(c^n)\}}{1&plus;&space;\Delta&space;\kappa&space;k^4&space;}">
+<img src="https://latex.codecogs.com/svg.image?\widehat{c}_{\boldsymbol{k}}^{n&plus;1}=&space;\frac{&space;\widehat{c}_{\boldsymbol{k}}-&space;\Delta&space;t&space;M&space;k^2&space;\mathcal{FT}\{f'(c^n)\}}{1&plus;&space;M&space;&space;\kappa&space;k^4&space;{\Delta&space;t}}">
 
 where <img src="https://latex.codecogs.com/svg.image?\inline&space;\Delta&space;t&space;"> is the time step value. 
 
