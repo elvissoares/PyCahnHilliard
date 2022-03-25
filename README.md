@@ -13,7 +13,9 @@ where <img src="https://render.githubusercontent.com/render/math?math=\kappa"> i
 
 <img src="https://render.githubusercontent.com/render/math?math=f(c) = W c^2(1-c)^2">
 
-where W is the height ot the thermodynamic barrier. 
+where W is the height ot the thermodynamic barrier. The next Figure presents this bulk free-energy.
+
+![Bulk](https://github.com/elvissoares/PyCahnHilliard/blob/master/ch-bulk-free-energy.png)
 
 ## Pseudo-spectral method
 

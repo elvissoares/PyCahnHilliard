@@ -19,8 +19,8 @@ from scipy.fft import fft2, ifft2
  an implicit pseudospectral algorithm
 """
 
-Nsteps = 2000
-dt = 0.01
+Nsteps = 1000
+dt = 0.1
 
 N = 256
 c_hat = np.empty((N,N), dtype=np.complex64)
@@ -28,11 +28,11 @@ dfdc_hat = np.empty((N,N), dtype=np.complex64)
 
 c = np.empty((Nsteps,N,N), dtype=np.float32)
 
-dx = 0.1
+dx = 1.0
 L = N*dx
 
 noise = 0.1
-c0 = 0.5
+c0 = 0.7
 
 rng = np.random.default_rng(12345) # the seed of random numbers generator
 
@@ -95,15 +95,21 @@ plt.show()
 from matplotlib import animation
 from matplotlib.animation import PillowWriter
 
-def animate(i):
-    ax.clear()
-    ax.imshow(c[10*i],cmap='RdBu_r', vmin=0.0, vmax=1.0)
-    ax.text(200,20,'t={:.2f}'.format(10*i*dt))
-#     fig.colorbar(im,label=r'$\phi$')
-    return fig,
-    
+# generate the GIF animation
+
 fig, ax = plt.subplots(1,1,figsize=(4,4))
-# fig.colorbar(label=r'$\phi$')
-ani = animation.FuncAnimation(fig, animate, frames= 99,
-                               interval = 100)
+im = ax.imshow(c[0],cmap='RdBu_r', vmin=0.0, vmax=1.0)
+cb = fig.colorbar(im,ax=ax, label=r'$c(x,y)$', shrink=0.8)
+tx = ax.text(190,20,'t={:.1f}'.format(0.0),
+         bbox=dict(boxstyle="round",ec='white',fc='white'))
+ax.set_title(r'$c_0=%.1f$'% c0)
+
+def animate(i):
+    im.set_data(c[5*i])
+    im.set_clim(0.0, 1.0)
+    tx.set_text('t={:.1f}'.format(5*i*dt))
+    return fig,
+
+ani = animation.FuncAnimation(fig, animate, frames= 199,
+                               interval = 50)
 ani.save('ch-c0='+str(c0)+'.gif',writer='pillow',fps=24,dpi=100)
