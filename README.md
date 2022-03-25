@@ -37,7 +37,7 @@ and using an *implicit* Euler integration, we have
 
 such that 
 
-<img src="https://latex.codecogs.com/svg.image?\widehat{c}_{\boldsymbol{k}}^{n&plus;1}=&space;\frac{&space;\widehat{c}_{\boldsymbol{k}}-&space;\Delta&space;t&space;M&space;k^2&space;\mathcal{FT}\{f'(c^n)\}}{1&plus;&space;\Delta&space;\kappa&space;k^4&space;}">
+<img src="https://latex.codecogs.com/svg.image?\widehat{c}_{\boldsymbol{k}}^{n&plus;1}=&space;\frac{&space;\widehat{c}_{\boldsymbol{k}}-&space;\Delta&space;t&space;M&space;k^2&space;\mathcal{FT}\{f'(c^n)\}}{1&plus;&space;\Delta&space;t&space;\kappa&space;k^4&space;}" title="https://latex.codecogs.com/svg.image?\widehat{c}_{\boldsymbol{k}}^{n&plus;1}=&space;\frac{&space;\widehat{c}_{\boldsymbol{k}}-&space;\Delta&space;t&space;M&space;k^2&space;\mathcal{FT}\{f'(c^n)\}}{1&plus;&space;\Delta&space;t&space;\kappa&space;k^4&space;}" />
 
 where <img src="https://latex.codecogs.com/svg.image?\inline&space;\Delta&space;t&space;"> is the time step value. 
 
@@ -50,3 +50,5 @@ The following figure is a result for the system with M=1.0, W=2.0, <img src="htt
 And the system is evolved until N = 2000 steps. 
 
 ![Output](https://github.com/elvissoares/PyCahnHilliard/blob/master/cahn-hilliard-c0-0.5.png)
+
+See the movies *c03.mov*, *c05.mov*, and *c07.mov*.
