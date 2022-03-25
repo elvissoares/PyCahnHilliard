@@ -1,43 +1,50 @@
 import numpy as np
-from matplotlib import pyplot as plt
-# from scipy.fft import fft2, ifft2
-import pyfftw
-import multiprocessing
-from pyfftw.interfaces.scipy_fftpack import fft2, ifft2
+import matplotlib.pyplot as plt
+from matplotlib import cm
+from scipy.fft import fft2, ifft2
+# import pyfftw
+# import multiprocessing
+# from pyfftw.interfaces.scipy_fftpack import fft2, ifft2
+
 # Author: Elvis do A. Soares
 # Github: @elvissoares
 # Date: 2020-08-16
+# Updated: 2022-03-25
 
-pyfftw.config.NUM_THREADS = multiprocessing.cpu_count()
-print('Number of cpu cores:',multiprocessing.cpu_count())
+# pyfftw.config.NUM_THREADS = multiprocessing.cpu_count()
+# print('Number of cpu cores:',multiprocessing.cpu_count())
 
 """
  The python script to solve the Cahn-Hilliard equation using
  an implicit pseudospectral algorithm
 """
 
-N = 512
+Nsteps = 2000
+dt = 0.01
+
+N = 256
 c_hat = np.empty((N,N), dtype=np.complex64)
 dfdc_hat = np.empty((N,N), dtype=np.complex64)
-c = np.empty((N,N), dtype=np.float32)
+
+c = np.empty((Nsteps,N,N), dtype=np.float32)
 
 dx = 0.1
 L = N*dx
 
 noise = 0.1
-c0 = 0.5
-c[:] = c0 + noise*np.random.standard_normal(c.shape)
+c0 = 0.3
+
+rng = np.random.default_rng(12345) # the seed of random numbers generator
+
+c[0] = c0 + noise*rng.standard_normal(c[0].shape)
 
 # plt.imshow(c)
-# plt.colorbar(cmap='viridis')
+# plt.colorbar(cmap='RdBu_r')
 # # plt.title('$c_0=%.1f$'% c0)
 # plt.savefig('cahn-hilliard-input.png')
 # plt.show()
 
-print('c0 = ',c.sum()*dx**2/L**2)
-
-Nsteps = 2000
-dt = 1.e-2
+print('c0 = ',c[0].sum()*dx**2/L**2)
 
 W = 2.0
 M = 1.0 # mobility
@@ -69,17 +76,32 @@ def fbulk(c):
 def dfdc(c):
     return 2*W*(c*(1-c)**2-(1-c)*c**2)
 
-for i in range(Nsteps):
-    c_hat[:] = fft2(c)
-    dfdc_hat[:] = fft2(dfdc(c)) # the FT of the derivative
-    dfdc_hat *= dealias
+c_hat[:] = fft2(c[0])
+for i in range(1,Nsteps):
+    dfdc_hat[:] = fft2(dfdc(c[i-1])) # the FT of the derivative
+    dfdc_hat *= dealias # dealising
     c_hat[:] = (c_hat-dt*K2*M*dfdc_hat)/(1+dt*M*kappa*K2**2) # updating in time
-    c[:] = ifft2(c_hat).real # inverse fourier transform
+    c[i] = ifft2(c_hat).real # inverse fourier transform
     
-print('c = ',c.sum()*dx**2/L**2)
+print('c = ',c[-1].sum()*dx**2/L**2)
 
-plt.imshow(c)
-plt.colorbar(cmap='viridis')
+plt.imshow(c[-1],cmap='RdBu_r', vmin=0.0, vmax=1.0)
 plt.title('$c_0=%.1f$'% c0)
 plt.savefig('cahn-hilliard-c0-%.1f.png'% c0)
 plt.show()
+
+from matplotlib import animation
+from matplotlib.animation import PillowWriter
+
+def animate(i):
+    ax.clear()
+    ax.imshow(c[10*i],cmap='RdBu_r', vmin=0.0, vmax=1.0)
+    ax.text(200,20,'t={:.2f}'.format(10*i*dt))
+#     fig.colorbar(im,label=r'$\phi$')
+    return fig,
+    
+fig, ax = plt.subplots(1,1,figsize=(4,4))
+# fig.colorbar(label=r'$\phi$')
+ani = animation.FuncAnimation(fig, animate, frames= 99,
+                               interval = 100)
+ani.save('ch-c0='+str(c0)+'.gif',writer='pillow',fps=24,dpi=100)
