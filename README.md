@@ -45,7 +45,7 @@ where <img src="https://latex.codecogs.com/svg.image?\inline&space;\Delta&space;
 
 The following figure is a result for the system with M=1.0, W=2.0, <img src="https://render.githubusercontent.com/render/math?math=\kappa=0.5">, dx=0.1, dt=0.01. The initial condition is given by a normal distribution 
 
-<img src="https://render.githubusercontent.com/render/math?math=c_0 = 0.5%2B 0.1 \mathcal{N}(0,1)">
+<img src="https://latex.codecogs.com/svg.image?c(\boldsymbol{r},t=0)&space;=&space;c_0&space;&plus;&space;0.1&space;\mathcal{N}(0,1)" title="https://latex.codecogs.com/svg.image?c(\boldsymbol{r},t=0) = c_0 + 0.1 \mathcal{N}(0,1)" />
 
 And the system is evolved until N = 1000 steps. 
 
@@ -53,6 +53,6 @@ And the system is evolved until N = 1000 steps.
 
 ![GIF](https://github.com/elvissoares/PyCahnHilliard/blob/master/ch-c0%3D0.3.gif)
 
-### C0 = 0.3
+### C0 = 0.5
 
 ![GIF](https://github.com/elvissoares/PyCahnHilliard/blob/master/ch-c0%3D0.5.gif)
