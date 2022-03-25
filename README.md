@@ -53,10 +53,6 @@ And the system is evolved until N = 1000 steps.
 
 ![GIF](https://github.com/elvissoares/PyCahnHilliard/blob/master/ch-c0%3D0.3.gif)
 
-![Output](https://github.com/elvissoares/PyCahnHilliard/blob/master/cahn-hilliard-c0-0.3.png)
-
 ### C0 = 0.3
 
 ![GIF](https://github.com/elvissoares/PyCahnHilliard/blob/master/ch-c0%3D0.5.gif)
-
-![Output](https://github.com/elvissoares/PyCahnHilliard/blob/master/cahn-hilliard-c0-0.5.png)
