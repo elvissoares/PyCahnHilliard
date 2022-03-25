@@ -32,7 +32,7 @@ dx = 0.1
 L = N*dx
 
 noise = 0.1
-c0 = 0.3
+c0 = 0.5
 
 rng = np.random.default_rng(12345) # the seed of random numbers generator
 
@@ -84,6 +84,8 @@ for i in range(1,Nsteps):
     c[i] = ifft2(c_hat).real # inverse fourier transform
     
 print('c = ',c[-1].sum()*dx**2/L**2)
+
+print('relative_error = ',np.abs(c[-1].sum()-c[0].sum())/c[0].sum())
 
 plt.imshow(c[-1],cmap='RdBu_r', vmin=0.0, vmax=1.0)
 plt.title('$c_0=%.1f$'% c0)
