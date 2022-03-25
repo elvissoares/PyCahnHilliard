@@ -32,7 +32,7 @@ dx = 1.0
 L = N*dx
 
 noise = 0.1
-c0 = 0.7
+c0 = 0.5
 
 rng = np.random.default_rng(12345) # the seed of random numbers generator
 
