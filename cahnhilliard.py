@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from tqdm import tqdm
 from matplotlib import cm
 from scipy.fft import fft2, ifft2
 # import pyfftw
@@ -19,7 +20,7 @@ from scipy.fft import fft2, ifft2
  an implicit pseudospectral algorithm
 """
 
-Nsteps = 1000
+Nsteps = 10000
 dt = 0.1
 
 N = 256
@@ -77,7 +78,7 @@ def dfdc(c):
     return 2*W*(c*(1-c)**2-(1-c)*c**2)
 
 c_hat[:] = fft2(c[0])
-for i in range(1,Nsteps):
+for i in tqdm(range(1,Nsteps)):
     dfdc_hat[:] = fft2(dfdc(c[i-1])) # the FT of the derivative
     dfdc_hat *= dealias # dealising
     c_hat[:] = (c_hat-dt*K2*M*dfdc_hat)/(1+dt*M*kappa*K2**2) # updating in time
