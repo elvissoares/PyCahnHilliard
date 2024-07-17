@@ -31,15 +31,15 @@ and $k_i = \{-\pi N_i/L_i, -\pi(N_i-1)/L_i, \ldots, \pi(N_i-1)/L_i,\pi N_i/L_i\}
 
 The Fourier transform of the dynamical equation is 
 
-$$\frac{\partial \widehat{c}_{\boldsymbol{k}}}{\partial t} = M \left[ -k^2 \mathcal{FT}[f']-\kappa k^4 \widehat{c}_{\boldsymbol{k}}\right]$$
+$$\frac{\partial \widehat{c}_{\boldsymbol{k}} }{\partial t} = M \left [ -k^2 \mathcal{FT}[f']-\kappa k^4 \widehat{c}_{\boldsymbol{k}} \right ]$$
 
 and using an *implicit* Euler time integration, we have
 
-$$\frac{\widehat{c}_{\boldsymbol{k}}^{n+1}-\widehat{c}_{\boldsymbol{k}}^{n}}{\Delta t}=M\left[-k^2\mathcal{FT}[f'(c^n)]-\kappa k^4\widehat{c}_{\boldsymbol{k}}^{n+1}\right]$$
+$$\frac{\widehat{c}_{\boldsymbol{k}}^{n+1} -\widehat{c}_{\boldsymbol{k}}^{n} }{\Delta t}=M\left [-k^2\mathcal{FT}[f'(c^n)]-\kappa k^4 \widehat{c}_{\boldsymbol{k}}^{n+1} \right ]$$
 
 such that 
 
-$$\widehat{c}_{\boldsymbol{k}}^{n+1}=\frac{\widehat{c}_{\boldsymbol{k}}^n -\Delta t M k^2 \mathcal{FT}[f'(c^n)]}{1 +\Delta t \kappa k^4}$$
+$$\widehat{c}_{\boldsymbol{k}}^{n+1} =\frac{\widehat{c}_{\boldsymbol{k}}^n -\Delta t M k^2 \mathcal{FT}[f'(c^n)]}{1 +\Delta t \kappa k^4}$$
 
 where $\Delta t$ is the time stepsize. 
 
