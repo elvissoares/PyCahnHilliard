@@ -31,7 +31,9 @@ and $k_i = \{-\pi N_i/L_i, -\pi(N_i-1)/L_i, \ldots, \pi(N_i-1)/L_i,\pi N_i/L_i\}
 
 The Fourier transform of the dynamical equation is 
 
-$$ \frac{\partial}{\partial t} \widehat{c}_{\boldsymbol{k}}  = M [ - k^2 \mathcal{FT}[f']-\kappa k^4 \widehat{c}_{\boldsymbol{k}} ] $$
+```math
+\frac{\partial}{\partial t} \widehat{c}_{\boldsymbol{k}}  = M [ - k^2 \mathcal{FT}[f']-\kappa k^4 \widehat{c}_{\boldsymbol{k}} ]
+``` 
 
 and using an *implicit* Euler time integration, we have
 
