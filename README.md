@@ -25,21 +25,21 @@ $$\displaystyle c(\boldsymbol{r},t) = \frac{1}{L^2} \sum_{\boldsymbol{k}} \wideh
 
 where the Fourier coefficients are given by 
 
-$$\widehat{c}_{\boldsymbol{k}}(t) = \mathcal{FT}\{c(\boldsymbol{r},t) \} = \int  c(\boldsymbol{r},t)e^{-i \boldsymbol{k} \cdot \boldsymbol{r} }\text{d}{\boldsymbol{r}} $$
+$$\widehat{c}_{\boldsymbol{k}}(t) = \mathcal{FT}[c(\boldsymbol{r},t) ] = \int_V  c(\boldsymbol{r},t)e^{-i \boldsymbol{k} \cdot \boldsymbol{r} }\text{d}{\boldsymbol{r}} $$
 
 and $k_i = \{-\pi N_i/L_i, -\pi(N_i-1)/L_i, \ldots, \pi(N_i-1)/L_i,\pi N_i/L_i\}$ where $\Delta_i$ is the gridsize of the meshgrid on the $i$ direction.
 
 The Fourier transform of the dynamical equation is 
 
-$$\frac{\partial \widehat{c}_{\boldsymbol{k}}}{\partial t} = M \left[ -k^2 \mathcal{FT}\{f'\}-\kappa k^4 \widehat{c}_{\boldsymbol{k}}\right]$$
+$$\frac{\partial \widehat{c}_{\boldsymbol{k}}}{\partial t} = M \left[ -k^2 \mathcal{FT}[f']-\kappa k^4 \widehat{c}_{\boldsymbol{k}}\right]$$
 
 and using an *implicit* Euler time integration, we have
 
-$$\frac{\widehat{c}_{\boldsymbol{k}}^{n+1}-\widehat{c}_{\boldsymbol{k}}^{n}}{\Delta t}=M\left[-k^2\mathcal{FT}\{f'(c^n)\}-\kappa k^4\widehat{c}_{\boldsymbol{k}}^{n+1}\right]$$
+$$\frac{\widehat{c}_{\boldsymbol{k}}^{n+1}-\widehat{c}_{\boldsymbol{k}}^{n}}{\Delta t}=M\left[-k^2\mathcal{FT}[f'(c^n)]-\kappa k^4\widehat{c}_{\boldsymbol{k}}^{n+1}\right]$$
 
 such that 
 
-$$\widehat{c}_{\boldsymbol{k}}^{n+1}=\frac{\widehat{c}_{\boldsymbol{k}}^n -\Delta t M k^2 \mathcal{FT}\{f'(c^n)\}}{1 +\Delta t \kappa k^4}$$
+$$\widehat{c}_{\boldsymbol{k}}^{n+1}=\frac{\widehat{c}_{\boldsymbol{k}}^n -\Delta t M k^2 \mathcal{FT}[f'(c^n)]}{1 +\Delta t \kappa k^4}$$
 
 where $\Delta t$ is the time stepsize. 
 
